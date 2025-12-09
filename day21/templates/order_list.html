@@ -1,0 +1,32 @@
+{%extends 'layout.html'%}
+
+{%block body%}
+    <div style="margin-bottom: 10px;">
+        <a  class="btn btn-success" href="/order/create">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> 添加
+        </a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>URL</th>
+                <th>数量</th>
+                <th>状态</th>
+                <th>客户</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in data_list%}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.url}}</td>
+                <td>{{item.count}}</td>
+                <td><span class="label label-{{ static_dict[item.status].cls }}">{{ static_dict[item.status].text }}</span></td>
+                <td>{{item.real_name}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{%endblock%}
